@@ -3,7 +3,10 @@ const String signInRoute = "signIn";
 const String signUpRoute = "signUp";
 const String accountRoute = "account";
 
-//Home/navigation bottom nav
+//Main/navigation bottom nav
+const String mainRoute = "main";
+
+//Home
 const String homeRoute = "home";
 
 //Blog Post

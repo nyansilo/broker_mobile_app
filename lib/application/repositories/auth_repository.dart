@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import '../../application/storage/storage_keys.dart';
+import '../../application/storage/local_storage.dart';
 import '../../application/classes/errors/common_error.dart';
 import '../madalali_api.dart';
 
@@ -29,12 +31,12 @@ class AuthRepositoryImpl implements AuthRepository {
         "/api/auth/login",
         data: {"email": email, "password": password},
       );
-      print(response);
-      // String accessToken = response.data['accessToken'];
-      // String expiresAt = response.data['expiresAt'];
-      // await LocalStorage.setItem(TOKEN, accessToken);
-      // await LocalStorage.setItem(TOKEN_EXPIRATION, expiresAt);
-      //return;
+      //print(response);
+      String accessToken = response.data['accessToken'];
+      String expiresAt = response.data['expiresAt'];
+      await LocalStorage.setItem(TOKEN, accessToken);
+      await LocalStorage.setItem(TOKEN_EXPIRATION, expiresAt);
+      return;
     } on DioError catch (e) {
       showNetworkError(e);
     }

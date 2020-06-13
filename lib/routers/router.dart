@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:madalali/presentation/auth/account_page.dart';
+import '../presentation/auth/account_page.dart';
+import '../presentation/main/main_page.dart';
 import '../presentation/blog/blog_detail_page.dart';
 import '../presentation/blog/blog_page.dart';
 import '../presentation/favorite/favorite_page.dart';
@@ -22,6 +23,10 @@ class Router {
         return MaterialPageRoute(builder: (_) => SignInPage());
         break;
 
+      case mainRoute:
+        return MaterialPageRoute(builder: (_) => MainPage());
+        break;
+
       case homeRoute:
         return MaterialPageRoute(builder: (_) => HomePage());
         break;
@@ -30,9 +35,9 @@ class Router {
         return MaterialPageRoute(builder: (_) => PropertiesPage());
         break;
 
-      case propertyDetailRoute:
-        return MaterialPageRoute(builder: (_) => PropertyDetailPage());
-        break;
+      // case propertyDetailRoute:
+      //   return MaterialPageRoute(builder: (_) => PropertyDetailPage());
+      //   break;
 
       case blogRoute:
         return MaterialPageRoute(builder: (_) => BlogPage());

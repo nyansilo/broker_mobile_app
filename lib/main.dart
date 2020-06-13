@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 import 'application/repositories/auth_repository.dart';
 import 'application/states/auth_state.dart';
+import 'application/storage/local_storage.dart';
+import 'application/storage/storage_keys.dart';
 import 'routers/route_constant.dart';
 import 'routers/router.dart';
 import 'values/branding_color.dart';
 
-void main() => runApp(MadalaliApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalStorage.initializeSharedPreferences();
+  runApp(MadalaliApp());
+}
 
 class MadalaliApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -22,7 +28,8 @@ class MadalaliApp extends StatelessWidget {
             primarySwatch: brandingColor,
           ),
           onGenerateRoute: Router.onGenerateRoute,
-          initialRoute: signInRoute,
+          initialRoute:
+              LocalStorage.getItem(TOKEN) != null ? mainRoute : signInRoute,
         );
       },
     );
