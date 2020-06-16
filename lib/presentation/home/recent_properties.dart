@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:madalali/presentation/properties/property_detail_page.dart';
-import 'package:madalali/values/branding_color.dart';
+import '../../presentation/properties/property_detail_page.dart';
+import '../../values/branding_color.dart';
+import 'package:page_transition/page_transition.dart';
 
 class RecentProperties extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _RecentPropertiesState extends State<RecentProperties> {
                                     ? Colors.grey[400]
                                     : Colors.redAccent,
                               ),
+                              onPressed: () {},
                             ),
                             Container(
                                 width: 90,
@@ -45,10 +47,17 @@ class _RecentPropertiesState extends State<RecentProperties> {
                                     ),
                                   ),
                                   onTap: () {
+                                    // Navigator.of(context).push(
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) =>
+                                    //         PropertyDetailPage(),
+                                    //   ),
+                                    // );
                                     Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                PropertyDetailPage(index)));
+                                      PageTransition(
+                                          child: PropertyDetailPage(),
+                                          type: PageTransitionType.fade),
+                                    );
                                   },
                                 )),
                             SizedBox(
